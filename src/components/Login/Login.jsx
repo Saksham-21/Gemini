@@ -14,6 +14,7 @@ const Login = () => {
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
+        console.log(auth.currentUser);
         const { email, photoURL, displayName } = result.user;
         setEmail(email);
         setpicURL(photoURL);
