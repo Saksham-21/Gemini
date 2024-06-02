@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/context";
 import { useAuth0 } from "@auth0/auth0-react";
+import { isMobile } from 'react-device-detect';
+import Sidebar from "../Sidebar/Sidebar";
+// import {setExtended} from "../Sidebar/Sidebar";
 
 const Main = () => {
   const {
@@ -15,13 +18,19 @@ const Main = () => {
     input,
     user_N,
     picURL,
+    setExtended,
   } = useContext(Context);
-
+  const [phone,isPhone]=useState(false);
+  // setExtended(false);
   const { user, isAuthenticated } = useAuth0();
+  const handleClick=()=>{
+    console.log("trueeee");
+    setExtended((prev) => !prev)
+  }
   return (
     <div className="main">
       <div className="nav">
-        <p>Gemini</p>
+        {isMobile ? <p onClick={handleClick}>Gemini</p> : <p>Gemini</p>}
         {/* {isAuthenticated ? <img src={picURL} alt="" />:<img src={assets.user_icon} alt="" />} */}
         <img src={picURL} alt="" />
       </div>

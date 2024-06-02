@@ -15,6 +15,7 @@ const ContextProvider = (props) => {
   const [user_N, setUser] = useState();
   const [picURL, setpicURL] = useState();
   const [email, setEmail] = useState();
+  const [extended, setExtended] = useState(false);
 
   const delayPara = (index, nextWord) => {
     setTimeout(function () {
@@ -93,6 +94,8 @@ const ContextProvider = (props) => {
     setpicURL,
     email,
     setEmail,
+    extended,
+    setExtended,
   };
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>
